@@ -12,6 +12,19 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('name').textContent = ', ' + name; // Add name with comma
     }
     
+    // Check for year in URL
+    const year = getQueryParam('year');
+    if (year) {
+        const yearNum = parseInt(year);
+        document.getElementById('year-text').textContent = year + getSuffix(yearNum) + ' ';
+        
+        // Add milestone text for special years
+        const milestoneText = getMilestoneText(yearNum);
+        if (milestoneText) {
+            document.getElementById('milestone').textContent = '✨ ' + milestoneText + ' ✨';
+        }
+    }
+    
     // Check for Google Sheet ID in URL
     const sheetId = getQueryParam('sheet');
     if (sheetId) {
@@ -21,6 +34,35 @@ document.addEventListener("DOMContentLoaded", () => {
     // Generate falling hearts dynamically
     createFallingHearts(); // Initialize falling hearts
 });
+
+// Get ordinal suffix for numbers (1st, 2nd, 3rd, etc.)
+function getSuffix(num) {
+    if (num >= 11 && num <= 13) return 'th';
+    switch (num % 10) {
+        case 1: return 'st';
+        case 2: return 'nd';
+        case 3: return 'rd';
+        default: return 'th';
+    }
+}
+
+// Get milestone text for special anniversary years
+function getMilestoneText(year) {
+    const milestones = {
+        1: 'Paper Anniversary',
+        5: 'Wood Anniversary',
+        10: 'Tin Anniversary',
+        15: 'Crystal Anniversary',
+        20: 'China Anniversary',
+        25: '💎 Silver Jubilee 💎',
+        30: 'Pearl Anniversary',
+        40: 'Ruby Anniversary 💎',
+        50: 'Golden Jubilee 🥇',
+        60: 'Diamond Jubilee 💎',
+        75: 'Platinum Jubilee'
+    };
+    return milestones[year] || null;
+}
 
 // Function to convert Google Drive share links to viewable format
 function convertGoogleDriveUrl(url) {
