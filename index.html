@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary!</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+        <h1 class="headline">💕 Happy Anniversary<span id="name"></span>! 💕</h1>
+        <p class="message">Celebrating your beautiful journey of love and togetherness!</p>
+        <button class="btn" onclick="revealMessage()">Click for a Surprise!</button>
+        <div class="surprise hidden">
+            <div class="balloons-emoji">
+                <span>💖</span>
+                <span>💍</span>
+                <span>🌹</span>
+                <span>💑</span>
+                <span>✨</span>
+                <span>❤️</span>
+                <span>💐</span>
+            </div>
+            <p class="surprise-message">Wishing you both a lifetime of love and happiness! 💕💍</p>
+            <button class="btn gallery-btn" onclick="revealGallery()">View Gallery 📷</button>
+        </div>
+        <div id="gallery" class="gallery hidden">
+            <!-- Photos loaded dynamically from Google Sheet -->
+        </div>
+    </div>
+    <div class="hearts">
+        <!-- Hearts generated dynamically -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
